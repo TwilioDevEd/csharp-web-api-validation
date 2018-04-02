@@ -16,15 +16,14 @@ namespace ValidateRequestExample.Filters
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ValidateTwilioRequestImprovedAttribute : ActionFilterAttribute
     {
-        private readonly RequestValidator _requestValidator;
+        private readonly string _authToken;
         private readonly string _urlSchemeAndDomain;
         private static bool IsTestEnvironment =>
             bool.Parse(ConfigurationManager.AppSettings["IsTestEnvironment"]);
 
         public ValidateTwilioRequestImprovedAttribute()
         {
-            var authToken = ConfigurationManager.AppSettings["TwilioAuthToken"];
-            _requestValidator = new RequestValidator(authToken);
+            _authToken = ConfigurationManager.AppSettings["TwilioAuthToken"];
             _urlSchemeAndDomain = ConfigurationManager.AppSettings["TwilioBaseUrl"];
         }
 
@@ -49,7 +48,7 @@ namespace ValidateRequestExample.Filters
 
             var requestUrl = _urlSchemeAndDomain + request.RequestUri.PathAndQuery;
             var formData = await GetFormDataAsync(request.Content);
-            return _requestValidator.Validate(requestUrl, formData, signature.First());
+            return new RequestValidator(_authToken).Validate(requestUrl, formData, signature.First());
         }
 
         private async Task<IDictionary<string, string>> GetFormDataAsync(HttpContent content)
