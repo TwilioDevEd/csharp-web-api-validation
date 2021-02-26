@@ -21,7 +21,7 @@ jobs:
       uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet Packages
-      run: nuget restore WebApiValidation.sln
+      run: nuget restore ValidateRequestExample.sln
 
     - name: Build Web App
-      run: msbuild WebApiValidation.sln /verbosity:minimal
+      run: msbuild ValidateRequestExample.sln /verbosity:minimal
