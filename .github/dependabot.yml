@@ -1,0 +1,49 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/ValidateRequestExample"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Microsoft.IdentityModel.Logging
+    versions:
+    - 6.10.2
+  - dependency-name: Twilio
+    versions:
+    - 5.53.1
+    - 5.54.0
+    - 5.55.0
+    - 5.56.0
+    - 5.57.0
+    - 5.58.0
+  - dependency-name: Microsoft.Net.Compilers
+    versions:
+    - 3.8.0
+  - dependency-name: Microsoft.ApplicationInsights.PerfCounterCollector
+    versions:
+    - 2.16.0
+  - dependency-name: Microsoft.ApplicationInsights.Web
+    versions:
+    - 2.16.0
+  - dependency-name: Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel
+    versions:
+    - 2.16.0
+  - dependency-name: bootstrap
+    versions:
+    - 3.4.1
+  - dependency-name: WebGrease
+    versions:
+    - 1.6.0
+  - dependency-name: Microsoft.AspNet.WebApi.HelpPage
+    versions:
+    - 5.2.7
+  - dependency-name: Microsoft.AspNet.WebApi.Client
+    versions:
+    - 5.2.7
+  - dependency-name: Microsoft.AspNet.Mvc
+    versions:
+    - 5.2.7
+  - dependency-name: Microsoft.AspNet.WebPages
+    versions:
+    - 3.2.7
