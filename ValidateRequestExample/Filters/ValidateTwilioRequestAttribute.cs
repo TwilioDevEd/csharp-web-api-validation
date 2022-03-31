@@ -14,12 +14,12 @@ using Twilio.Security;
 namespace ValidateRequestExample.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class ValidateTwilioRequestAttribute : ActionFilterAttribute
+    public class ValidateTwilioRequestImprovedAttribute : ActionFilterAttribute
     {
         private readonly string _authToken;
         private readonly string _urlSchemeAndDomain;
 
-        public ValidateTwilioRequestAttribute()
+        public ValidateTwilioRequestImprovedAttribute()
         {
             _authToken = ConfigurationManager.AppSettings["TwilioAuthToken"];
             _urlSchemeAndDomain = ConfigurationManager.AppSettings["TwilioBaseUrl"];
